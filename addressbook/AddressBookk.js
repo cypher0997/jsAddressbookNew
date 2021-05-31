@@ -39,7 +39,7 @@ function createContactPerson(){
     
 
 }
-function addressBookOperations(){
+function addressBookOperationsApplied(){
     const action = Number.parseInt(prompt("press 1 to add new contact person and display addressbook"+"\n"+
                         "press 2 edit contact person on basis of person name 'anurag' "+"\n"+
                         "press 3 delete contact person on basis"+"\n"+
@@ -128,4 +128,4 @@ function addressBookOperations(){
             break;
     }
 }
-addressBookOperations();
+addressBookOperationsApplied();
