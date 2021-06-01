@@ -12,11 +12,11 @@ class ContactPerson{
             this.phoneNumber = phoneNumber
     }   
 }
-let contactPerson = new ContactPerson("anurag","bhardwaj","achrol","jaipur","rajastha",4645,997877)
+let contactPerson = new ContactPerson("anurag","bhardwaj","achrol","zone","rajastha",4645,997877)
 addressBook.push(contactPerson)
 function createContactPerson(){
     outer :while(true){
-        let firstName = String.toString(prompt("enter the first name: 1"))
+        let firstName = (prompt("enter the first name: ")).toString()
         for(let i = 0;i<addressBook.length;i++){
             if(addressBook[i].fName == firstName){
                 console.log(" not included because duplicate entry of same person not allowed,please give different name")
@@ -36,7 +36,6 @@ function createContactPerson(){
         break
 
     }
-    
 
 }
 function addressBookOperationsApplied(){
@@ -47,7 +46,8 @@ function addressBookOperationsApplied(){
                         "press 5 to find specific person named 'rajat' in 'udaipur'"+"\n"+
                         "press 6 to find all contact person in udaipur"+"\n"+
                         "press 7 to find number of contact person in 'udaipur city"+"\n"+
-                        "press 8 to stop operations"+"\n"+
+                        "press 8 to sort addressbook on bases of city"+"\n"+
+                        "press 9 to stop execution"+"\n"+
                         " "))
 
     let choice = action
@@ -58,7 +58,7 @@ function addressBookOperationsApplied(){
             for(let view in addressBook){
                 console.log(addressBook[view])
             }
-            adb()
+            addressBookOperationsApplied()
             break;
             
         case 2:
@@ -73,7 +73,7 @@ function addressBookOperationsApplied(){
                     addressBook[i].phoneNumber=7867609
                 }
             }
-            adb()
+            addressBookOperationsApplied()
             break;
         
         case 3:
@@ -82,7 +82,7 @@ function addressBookOperationsApplied(){
                     addressBook.splice(i,1)
                 }
             }
-            adb()
+            addressBookOperationsApplied()
             break;
     
         case 4:
@@ -91,7 +91,7 @@ function addressBookOperationsApplied(){
                 return accumulator
              },0);
              console.log(length)
-             adb()
+             addressBookOperationsApplied()
              break;
     
         case 5:
@@ -99,7 +99,7 @@ function addressBookOperationsApplied(){
                 return values.city == "udaipur" && values.fName == "rajat"
             })
             console.log(filteredArray)
-            adb()
+            addressBookOperationsApplied()
             break;
     
         case 6:
@@ -107,7 +107,7 @@ function addressBookOperationsApplied(){
                 return values.city == "udaipur"
             })
             console.log(filteredArrayForCityOrState)
-            adb()
+            addressBookOperationsApplied()
             break;
     
         case 7:
@@ -118,12 +118,35 @@ function addressBookOperationsApplied(){
                 return accumulator
               },0);
              console.log(filteredArrayForCountByCityOrState)
-             adb()
+             addressBookOperationsApplied()
              break;
     
         case 8:
+            function sortAddressBook(object1 , object2){
+                const res1 = object1.city.toUpperCase();
+                console.log(res1)
+                const res2 = object2.city.toUpperCase();
+                console.log(res2)
+                
+            
+                let comparison = 0;
+                if (res1 > res2) {
+                    comparison = 1;
+                } else if (res1 < res2) {
+                    comparison = -1;
+                }
+                return comparison;
+            }
+            addressBook.sort(sortAddressBook)
+            for(let view in addressBook){
+                console.log(addressBook[view])
+            }+
+            addressBookOperationsApplied()
             break;
     
+        case 9:
+            break;
+        
         default:
             break;
     }
